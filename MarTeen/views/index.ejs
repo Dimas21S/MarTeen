@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarTeen App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container-fluid {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: #fff;
+            height: 100vh;
+            padding: 20px;
+            border-right: 1px solid #e0e0e0;
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+
+        .sidebar h2 {
+            font-weight: bold;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 30px;
+        }
+
+        .sidebar ul li {
+            padding: 10px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s;
+            border-radius: 20px;
+        }
+
+        .sidebar ul li:hover {
+            background-color: orange;
+            border-radius: 20px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: gray;
+            display: flex;
+            align-items: center;
+            width: 100%;
+        }
+
+        .sidebar ul li i {
+            margin-right: 10px;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+            background-color: #f8f9fa;
+            position: relative;
+            margin-left: 250px;
+            transition: margin-left 0.3s;
+        }
+
+        .promo-banner {
+            background-color: #ffcc00;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .promo-banner img {
+            width: 400px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .categories {
+            margin-top: 20px;
+        }
+
+        .category-card {
+            text-align: center;
+            padding: 10px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-card img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+        }
+
+        .category-card h4 {
+            margin-top: 10px;
+            font-size: 16px;
+        }
+
+        .category-title {
+            margin-top: 30px;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .view-all {
+            text-align: right;
+            margin-bottom: 10px;
+        }
+
+        .btn-login-register {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 991px) {
+            .container-fluid {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                height: auto;
+                border-right: none;
+                padding: 10px;
+                position: relative;
+                margin-bottom: 20px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding-left: 0;
+                margin-top: 20px;
+            }
+
+            .promo-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .promo-banner img {
+                width: 100%;
+                height: auto;
+                margin-top: 20px;
+            }
+
+            .category-card {
+                margin-bottom: 15px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .category-card {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+
+            .category-card img {
+                width: 50px;
+                height: 50px;
+            }
+
+            .category-card h4 {
+                font-size: 14px;
+            }
+
+            .btn-login-register button {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2><a href="/" style="text-decoration: none; color: inherit;">MarTeen</a></h2>
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="aset_index/Bill.png" alt="Bill Logo" style="width: 40px; height: auto; margin-right: 10px;">
+                        Diskon
+                    </a>
+                </li>
+                <li class="<%= (currentUrl === '/best-seller') ? 'active' : '' %>">
+                    <a href="/best-seller">
+                        <img src="aset_index/Review.png" alt="Best Seller" style="width: 40px; height: auto; margin-right: 10px;">
+                        Best Seller Kantin
+                    </a>
+                </li>
+                <li class="<%= (currentUrl === '/menu') ? 'active' : '' %>">
+                    <a href="/menu">
+                        <img src="aset_index/Bill.png" alt="Menu" style="width: 40px; height: auto; margin-right: 10px;">
+                        Menu
+                    </a>
+                </li>
+                <li class="<%= (currentUrl === '/pesanan') ? 'active' : '' %>">
+                    <a href="pesanan">
+                        <img src="aset_index/Delivery Scooter.png" alt="Pesanan Makanan" style="width: 40px; height: auto; margin-right: 10px;">
+                        Pesanan Makanan
+                    </a>
+                </li>
+                <li class="<%= (currentUrl === '/profil-pengaturan') ? 'active' : '' %>">
+                    <a href="/profil-pengaturan">
+                        <img src="aset_index/Process.png" alt="Profil & Pengaturan" style="width: 30px; margin-right: 10px;">
+                        Profil & Pengaturan
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Login/Register Buttons -->
+            <div class="btn-login-register">
+                <% if (user.name === 'Guest' || user.name === 'Stranger') { %>
+                    <button onclick="window.location.href='/login'" style="background-color: #ffcc00;">Login</button>
+                    <button onclick="window.location.href='/register'" style="background-color: #ffcc00;">Register</button>
+                <% } else { %>
+                    <button onclick="window.location.href='/logout'" style="background-color: #ffcc00;">Logout</button>
+                <% } %>
+            </div>
+
+            <h1>Hello,
+                <% if (user) { %>
+                    <%= user.name %>
+                <% } else { %>
+                    Stranger
+                <% } %>
+            </h1>
+
+            <!-- Promo Banner -->
+            <div class="promo-banner">
+                <div>
+                    <h2>Diskon 3% Nasi Goreng di Semua Kantin</h2>
+                    <p>Diskon ini berlaku hingga 19-04-2025</p>
+                </div>
+                <img src="aset_index/nasi_goreng.png" alt="Nasi Goreng">
+            </div>
+
+            <!-- Category Section -->
+            <div class="category-title">Category</div>
+            <div class="view-all"><a href="#">View all</a></div>
+            <div class="categories row">
+                <!-- Row 1 -->
+                <div class="col-md-3">
+                    <div class="category-card">
+                        <img src="aset_index/Baked.png" alt="Roti">
+                        <h4>Baked</h4>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category-card">
+                        <img src="aset_index/Burger.png" alt="Makanan Berat">
+                        <h4>Burger</h4>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category-card">
+                        <img src="aset_index/Coffee.png" alt="Minuman">
+                        <h4>Coffee</h4>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="category-card">
+                        <img src="aset_index/Chicken.png" alt="Jajanan">
+                        <h4>Chicken</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

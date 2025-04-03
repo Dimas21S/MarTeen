@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MartTeen App</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* General Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            background-color: #fff;
+            width: 250px;
+            height: 100vh;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar h2 {
+            color: #ff9900;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            display: block;
+        }
+
+        .sidebar ul li.active a{
+            color: #ff9900;
+            font-weight: bold;
+        }
+
+        /* Main Content Styling */
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .main-content h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .profile-banner {
+            background-color: #ffcc00;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .profile-picture-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .profile-picture {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid white;
+        }
+
+        .promo-banner {
+            background-color: #ffcc00;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .promo-banner img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            margin: 10px 0;
+        }
+
+        .promo-banner h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Category Section */
+        .category {
+            background-color: #fff;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .category h3 {
+            margin-bottom: 10px;
+        }
+
+        .category-icons img {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .btn-login-register {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>MartTeen</h2>
+            <ul>
+                <li><a href="#">Diskon</a></li>
+                <li><a href="#">Best Seller Kantin</a></li>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">Pesanan Makanan</a></li>
+                <li class="active"><a href="#">Profil & Pengaturan</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Login/Register Buttons -->
+            <div class="btn-login-register">
+                <a href="/login" class="btn btn-outline-primary">Login</a>
+                <a href="/register" class="btn btn-primary">Register</a>
+            </div>
+
+            <h1>Hello, Guest</h1>
+            <div class="profile-banner">
+                <div class="profile-picture-wrapper">
+                    <img src="aset_index/profile.jpg" alt="Profile Picture" class="profile-picture">
+                </div>
+                <span>Profile Picture</span>
+            </div>
+
+            <div class="promo-banner">
+                <h2>Diskon 3% Nasi Goreng di Semua Kantin</h2>
+                <img src="aset_index/nasi-goreng.jpg" alt="Nasi Goreng">
+                <p>Diskon ini berlaku hingga <strong>19-04-2025</strong></p>
+            </div>
+        </div>
+
+        <!-- Category Section -->
+        <div class="category">
+            <h3>Category</h3>
+            <a href="#">View all</a>
+            <div class="category-icons">
+                <img src="aset_index/baked.jpg" alt="Baked">
+                <img src="aset_index/burger.jpg" alt="Burger">
+                <img src="aset_index/coffee.jpg" alt="Coffee">
+                <img src="aset_index/chicken.jpg" alt="Chicken">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

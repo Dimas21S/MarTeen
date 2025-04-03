@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MarTeen App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .container-fluid {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .sidebar {
+        width: 250px;
+        background-color: #fff;
+        height: 100vh;
+        padding: 20px;
+        border-right: 1px solid #e0e0e0;
+      }
+
+      .sidebar h2 {
+        font-weight: bold;
+      }
+
+      .sidebar ul {
+        list-style-type: none;
+        padding: 0;
+        margin-top: 30px;
+      }
+
+      .sidebar ul li {
+        padding: 10px;
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+        transition: background-color 0.3s;
+        border-radius: 20px;
+      }
+
+      .sidebar ul li:hover {
+        background-color: orange;
+        border-radius: 20px;
+      }
+
+      .sidebar ul li a {
+        text-decoration: none;
+        color: gray;
+        display: flex;
+        align-items: center;
+        width: 100%;
+      }
+
+      .main-content {
+        flex-grow: 1;
+        padding: 20px;
+        background-color: #f8f9fa;
+        margin-left: 250px;
+        transition: margin-left 0.3s;
+      }
+
+      .promo-banner {
+        padding: 20px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 200px;
+      }
+
+      .promo-banner img {
+        width: 100%;
+        height: 200px;
+        border-radius: 10px;
+      }
+
+      .profile-container {
+        text-align: center;
+        padding: 0px;
+        margin-top: -40px;
+        border-radius: 15px;
+      }
+
+      .profile-picture-wrapper {
+        display: inline-block;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+        position: relative;
+      }
+
+      .profile-picture {
+        width: 120px;
+        height: 120px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      .profile-details-menu {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .profile-details-menu ul {
+        list-style: none;
+        display: flex;
+        padding: 0;
+        margin: 0;
+      }
+
+      .profile-details-menu ul li {
+        margin: 0 15px;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        color: gray;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+      }
+
+      .profile-details-menu ul li:hover {
+        background-color: orange;
+        color: white;
+      }
+
+      .myD {
+        padding-left: 30px;
+        background-color: rgb(219, 219, 219);
+        border-radius: 15px;
+        padding: 20px;
+      }
+
+      .name-fields {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+      }
+
+      .input-field {
+        flex: 1;
+      }
+
+      .input-field label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .input-field input {
+        width: 100%;
+        padding: 8px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        background-color: #f8f9fa;
+      }
+
+      .btn-login-register {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 1000;
+      }
+
+      /* Media Queries for Responsiveness */
+      @media (max-width: 991px) {
+        .container-fluid {
+          flex-direction: column;
+        }
+
+        .sidebar {
+          width: 100%;
+          height: auto;
+          border-right: none;
+          padding: 10px;
+        }
+
+        .main-content {
+          margin-left: 0;
+          margin-top: 20px;
+        }
+
+        .promo-banner {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .promo-banner img {
+          width: 100%;
+          height: auto;
+          margin-top: 20px;
+        }
+
+        .profile-container {
+          margin-top: 20px;
+        }
+      }
+
+      @media (max-width: 767px) {
+        .profile-picture {
+          width: 100px;
+          height: 100px;
+        }
+
+        .myD {
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+
+        .name-fields {
+          flex-direction: column;
+        }
+
+        .input-field {
+          margin-bottom: 10px;
+        }
+
+        .input-field input {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <h2>
+          <a href="/" style="text-decoration: none; color: inherit">MarTeen</a>
+        </h2>
+        <ul>
+          <li>
+            <a href="#">
+              <img
+                src="aset_index/Bill.png"
+                alt="Bill Logo"
+                style="width: 40px; height: auto; margin-right: 10px"
+              />
+              Diskon
+            </a>
+          </li>
+          <li class="<%= (currentUrl === '/best-seller') ? 'active' : '' %>">
+            <a href="/best-seller">
+              <img
+                src="aset_index/Review.png"
+                alt="Best Seller"
+                style="width: 40px; height: auto; margin-right: 10px"
+              />
+              Best Seller Kantin
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img
+                src="aset_index/Bill.png"
+                alt="Menu"
+                style="width: 40px; height: auto; margin-right: 10px"
+              />
+              Menu
+            </a>
+          </li>
+          <li class="<%= (currentUrl === '/pesanan') ? 'active' : '' %>">
+            <a href="/pesanan">
+              <img
+                src="aset_index/Delivery Scooter.png"
+                alt="Pesanan Makanan"
+                style="width: 40px; height: auto; margin-right: 10px"
+              />
+              Pesanan Makanan
+            </a>
+          </li>
+          <li
+            class="<%= (currentUrl === '/profil-pengaturan') ? 'active' : '' %>"
+          >
+            <a href="/profil-pengaturan">
+              <img
+                src="aset_index/Process.png"
+                alt="Profil & Pengaturan"
+                style="width: 30px; margin-right: 10px"
+              />
+              Profil & Pengaturan
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Login/Register Buttons -->
+        <div class="btn-login-register">
+          <% if (user.name==='Guest' || user.name==='Stranger' ) { %>
+          <button
+            onclick="window.location.href='/login'"
+            style="background-color: #ffcc00"
+          >
+            Login
+          </button>
+          <button
+            onclick="window.location.href='/register'"
+            style="background-color: #ffcc00"
+          >
+            Register
+          </button>
+          <% } else { %>
+          <button
+            onclick="window.location.href='/logout'"
+            style="background-color: #ffcc00"
+          >
+            Logout
+          </button>
+          <% } %>
+        </div>
+
+        <h1>Hello, <%= user ? user.name : 'Stranger' %></h1>
+
+        <!-- Promo Banner -->
+        <div class="promo-banner">
+          <img src="assets/logoo.jpg" alt="Promo" />
+        </div>
+
+        <!-- Profile Picture -->
+        <div class="profile-container">
+          <div class="profile-picture-wrapper">
+            <!-- Static Profile Picture -->
+            <img src="/assets/default-images.png" alt="Profile Picture" class="profile-picture" />
+          </div>
+        </div>
+
+        <!-- Profile Details Menu -->
+        <div class="profile-details-menu">
+          <ul>
+            <li id="md" onclick="myDetails()">My details</li>
+            <li>Profile</li>
+            <li>Password</li>
+            <li>Notifications</li>
+          </ul>
+        </div>
+
+        <!-- Profile Details -->
+        <div class="myD">
+          <!-- Username -->
+          <label for="username"><b>Username</b></label>
+          <input
+            id="username"
+            value="<%= user.name %>"
+            type="text"
+            readonly
+            class="form-control mb-3"
+            style="width: 25%"
+          />
+
+          <!-- Email -->
+          <label for="email"><b>Email</b></label>
+          <input
+            id="email"
+            value="<%= email %>"
+            type="email"
+            readonly
+            class="form-control mb-3"
+            style="width: 25%"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Admin Login Button -->
+    <% if (isAdmin) { %>
+      <button onclick="window.location.href='/admin-index'">Login Admin</button>
+    <% } %>
+
+    <script>
+      function myDetails() {
+        // Implement the function for My Details action
+        alert("Navigating to My Details page...");
+      }
+    </script>
+  </body>
+</html>
